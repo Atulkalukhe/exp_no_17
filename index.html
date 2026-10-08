@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220"><title>Practical 17 · IC 7490 Decade Counter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="#home"><span class="brand-mark">SGI</span><span><b>Digital Lab</b><small>MSBTE · K Scheme</small></span></a>
+ <nav class="main-nav" aria-label="Main navigation">
+  <button class="nav-link active" data-view="simulator">Simulator</button><button class="nav-link" data-view="learn">Learn</button><button class="nav-link" data-view="manual">Practical Manual</button>
+ </nav>
+ <div class="top-status"><i class="status-dot"></i><span>7490 LAB</span></div>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span>DEPARTMENT OF COMPUTER ENGINEERING</div>
+ <p class="dept">Developed by Dept of CSE, SGI</p><h1>Practical No. 17<span>Decade Counter Using Digital IC</span></h1>
+ <p class="hero-sub">Digital Techniques (313303) <span>•</span> MSBTE K Scheme</p></div>
+ <div class="hero-chip" aria-hidden="true"><div class="chip-glow"></div><div class="chip-face"><span class="chip-notch"></span><b>7490</b><small>DECADE COUNTER</small><span class="chip-pin-row"></span></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><span class="orbit-label">BCD / MOD-10</span></div>
+</section>
+<div class="view-wrap">
+<section class="view active" id="view-simulator">
+<div class="section-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h2>Counter simulator</h2></div><div class="live-pill"><i class="status-dot"></i>LIVE STATE</div></div>
+<div class="dashboard">
+<div class="left-column">
+ <article class="panel sim-panel">
+  <div class="panel-head"><div><div class="kicker">01 / COUNTING CIRCUIT</div><h3>IC 7490 decade counter</h3></div><button class="icon-button" id="inspectBtn" title="Show pin guide">ⓘ</button></div>
+  <div class="circuit-wrap">
+  <svg class="circuit" viewBox="0 0 760 410" role="img" aria-label="Interactive 7490 decade counter circuit with clock input and four output LEDs">
+   <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+   <path class="wire power-wire" d="M58 48H700V102M58 48V87"/><path class="wire ground-wire" d="M58 353H700V320M58 353V325"/>
+   <text class="wire-label power-label" x="57" y="31">+5 V</text><text class="wire-label" x="57" y="383">GND</text>
+   <path class="wire clock-wire" id="clockWire" d="M80 136H258"/><circle class="terminal" cx="80" cy="136" r="7"/><text class="wire-label" x="78" y="115">CLOCK A</text>
+   <path class="wire active-wire" id="qaWire" d="M440 128H518V126H560"/><path class="wire active-wire" id="qbWire" d="M440 174H518V176H560"/><path class="wire active-wire" id="qcWire" d="M440 220H518V226H560"/><path class="wire active-wire" id="qdWire" d="M440 266H518V276H560"/>
+   <g class="chip-drawing" id="chipDrawing"><rect x="258" y="104" width="182" height="212" rx="12"/><path class="chip-notch" d="M318 104a31 31 0 0 0 62 0"/><text class="chip-title" x="349" y="185" text-anchor="middle">IC 7490</text><text class="chip-note" x="349" y="207" text-anchor="middle">BCD DECADE</text><text class="chip-note" x="349" y="225" text-anchor="middle">COUNTER</text>
+   <text class="pin-num" x="250" y="142">14</text><text class="pin-name" x="276" y="142">CP₀ / CLK A</text><text class="pin-num" x="250" y="188">1</text><text class="pin-name" x="276" y="188">CP₁ / CLK B</text>
+   <text class="pin-name right" x="420" y="136">QA / 12</text><text class="pin-name right" x="420" y="182">QB / 9</text><text class="pin-name right" x="420" y="228">QC / 8</text><text class="pin-name right" x="420" y="274">QD / 11</text>
+   <circle class="pin-pad" cx="258" cy="136" r="4"/><circle class="pin-pad" cx="258" cy="182" r="4"/><circle class="pin-pad" cx="440" cy="128" r="4"/><circle class="pin-pad" cx="440" cy="174" r="4"/><circle class="pin-pad" cx="440" cy="220" r="4"/><circle class="pin-pad" cx="440" cy="266" r="4"/>
+   <circle class="pin-pad reset-pad" cx="258" cy="270" r="4"/><text class="pin-name" x="276" y="274">R0(1) 2 · R0(2) 3</text><circle class="pin-pad reset-pad" cx="258" cy="294" r="4"/><text class="pin-name" x="276" y="298">R9(1) 6 · R9(2) 7</text>
+   <text class="pin-name" x="273" y="336">VCC 5</text><text class="pin-name right" x="432" y="336">GND 10</text></g>
+   <g class="led-unit" data-led="QA"><rect x="576" y="109" width="50" height="34" rx="7"/><circle class="led" cx="601" cy="126" r="9"/><text x="642" y="132">QA</text><text class="led-level" id="levelQA" x="692" y="132">LOW</text></g>
+   <g class="led-unit" data-led="QB"><rect x="576" y="159" width="50" height="34" rx="7"/><circle class="led" cx="601" cy="176" r="9"/><text x="642" y="182">QB</text><text class="led-level" id="levelQB" x="692" y="182">LOW</text></g>
+   <g class="led-unit" data-led="QC"><rect x="576" y="209" width="50" height="34" rx="7"/><circle class="led" cx="601" cy="226" r="9"/><text x="642" y="232">QC</text><text class="led-level" id="levelQC" x="692" y="232">LOW</text></g>
+   <g class="led-unit" data-led="QD"><rect x="576" y="259" width="50" height="34" rx="7"/><circle class="led" cx="601" cy="276" r="9"/><text x="642" y="282">QD</text><text class="led-level" id="levelQD" x="692" y="282">LOW</text></g>
+   <path class="resistor" d="M630 126h10l4-8 8 16 8-16 8 16 8-16 5 8h10M630 176h10l4-8 8 16 8-16 8 16 8-16 5 8h10M630 226h10l4-8 8 16 8-16 8 16 8-16 5 8h10M630 276h10l4-8 8 16 8-16 8 16 8-16 5 8h10"/>
+   <path class="wire ground-wire" d="M700 126V276M700 276V353"/><text class="wire-label" x="610" y="324">LEDs + 330 Ω</text>
+   <path class="wire aux-wire" d="M440 128H482V80H226V182H258"/><text class="wire-label" x="88" y="221">QA → CLOCK B</text><text class="tiny-note" x="88" y="235">pin 12 to pin 1 feedback</text>
+   <path class="wire aux-wire" d="M100 315H210V270H258"/><text class="tiny-note" x="83" y="340">RESET / PRESET INPUTS</text>
+   <circle class="pulse-dot" id="pulseDot" cx="80" cy="136" r="5"/>
+  </svg>
+  </div>
+  <div class="circuit-caption"><span><i class="legend-dot green"></i>Signal path</span><span><i class="legend-dot amber"></i>Clock / control input</span><button class="text-button" id="breadboardBtn">Open breadboard view ↗</button></div>
+ </article>
+ <article class="panel controls-panel">
+  <div class="panel-head"><div><div class="kicker">02 / CLOCK CONTROL</div><h3>Apply clock pulses</h3></div><div class="pulse-count"><span id="pulseCount">0</span><small>APPLIED PULSES</small></div></div>
+  <div class="control-row"><button class="button primary" id="pulseBtn"><span class="button-icon">⌁</span>Clock pulse</button><button class="button" id="startBtn">▶ Start</button><button class="button" id="pauseBtn" disabled>Ⅱ Pause</button><button class="button" id="stepBtn">Step</button><button class="button danger-quiet" id="resetBtn">↺ Reset</button></div>
+  <div class="speed-row"><label for="speedRange">AUTO SPEED</label><input id="speedRange" type="range" min="250" max="1800" step="50" value="900"><span id="speedLabel">0.9 s</span><label class="switch"><input type="checkbox" id="autoToggle"><span class="slider"></span><span class="sr-only">Automatic clock mode</span></label><span class="switch-label">AUTO</span></div>
+  <div class="state-readout"><div class="readout-box"><span class="readout-label">DECIMAL</span><strong id="decimalDisplay">0</strong><span class="readout-foot">MOD-10</span></div><div class="readout-box binary-box"><span class="readout-label">BCD OUTPUT · QD QC QB QA</span><strong id="binaryDisplay">0000</strong><span class="readout-foot" id="weightsDisplay">0 + 0 + 0 + 0 = 0</span></div><div class="readout-box"><span class="readout-label">NEXT STATE</span><strong id="nextDisplay">0001</strong><span class="readout-foot" id="clockModeNote">Falling-edge triggered</span></div></div>
+  <div class="clock-note"><span class="clock-wave">▁▔▁▔</span><span>For decade mode, connect <b>QA (pin 12)</b> to <b>Clock B (pin 1)</b>. Clock A drives the ÷2 section.</span></div>
+ </article>
+ <article class="panel io-panel">
+  <div class="panel-head"><div><div class="kicker">03 / ASYNCHRONOUS CONTROLS</div><h3>Reset &amp; preset inputs</h3></div><span class="logic-tag">ACTIVE HIGH PAIRS</span></div>
+  <div class="input-pairs">
+   <div class="input-pair"><div class="pair-title"><span>RESET TO 0</span><small>R0(1) pin 2 + R0(2) pin 3</small></div><label class="input-toggle"><input type="checkbox" id="resetR1"><span></span><b>R0(1)</b></label><label class="input-toggle"><input type="checkbox" id="resetR2"><span></span><b>R0(2)</b></label></div>
+   <div class="input-pair"><div class="pair-title"><span>PRESET TO 9</span><small>R9(1) pin 6 + R9(2) pin 7</small></div><label class="input-toggle"><input type="checkbox" id="setS1"><span></span><b>R9(1)</b></label><label class="input-toggle"><input type="checkbox" id="setS2"><span></span><b>R9(2)</b></label></div>
+  </div><p id="controlMessage" class="control-message">Both inputs in a pair must be HIGH to activate the asynchronous function.</p>
+ </article>
+</div>
+<div class="right-column">
+ <article class="panel table-panel">
+  <div class="panel-head"><div><div class="kicker">04 / LIVE OBSERVATIONS</div><h3>Observation Table 17.1</h3></div><button class="icon-button" id="tableInfoBtn" title="Table help">ⓘ</button></div>
+  <div class="table-tools"><div class="table-status"><span class="record-dot"></span><span id="tableStatus">Recording live</span></div><div class="tool-buttons"><button class="mini-button" id="clearTableBtn">Clear</button><button class="mini-button" id="restartBtn">Restart</button><button class="mini-button" id="csvBtn">CSV ↓</button><button class="mini-button" id="printBtn">Print</button></div></div>
+  <div class="table-scroll"><table id="observationTable"><thead><tr><th>Clock<br>pulses</th><th>QD</th><th>QC</th><th>QB</th><th>QA</th><th>Decimal<br>equivalent</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+  <div class="table-foot"><span>Counts are sampled after each falling edge.</span><span><b id="tableProgress">1 / 11</b> rows</span></div>
+  <details class="practice-box"><summary>Student practice mode <span>Try it yourself</span></summary><div class="practice-content"><p>Enter the decimal equivalent for each pulse count. Your answer is checked against the simulator's BCD state.</p><div class="practice-form"><label>Pulse <select id="practicePulse"></select></label><label>Decimal <input id="practiceAnswer" inputmode="numeric" type="number" min="0" max="9" placeholder="0–9"></label><button class="mini-button accent" id="checkPractice">Check</button></div><p id="practiceFeedback" class="practice-feedback" aria-live="polite"></p></div></details>
+ </article>
+ <article class="panel timing-panel">
+  <div class="panel-head"><div><div class="kicker">05 / SIGNAL ANALYSIS</div><h3>Live timing diagram</h3></div><div class="timing-tools"><button class="mini-button" id="zoomOut">−</button><span id="zoomLabel">1×</span><button class="mini-button" id="zoomIn">+</button></div></div>
+  <div class="wave-wrap"><svg id="waveSvg" viewBox="0 0 690 225" role="img" aria-label="Timing diagram for clock and BCD outputs"><g id="waveGrid"></g><g id="waveTraces"></g><line id="waveCursor" x1="664" y1="8" x2="664" y2="215"/></svg></div>
+  <div class="timing-foot"><span>Each step marks one falling clock edge</span><button class="text-button" id="clearWave">Clear</button><button class="text-button" id="pauseWave">Ⅱ Pause</button></div>
+  <div class="timing-legend"><span><i class="trace-swatch trace-clock"></i>CLK A</span><span><i class="trace-swatch trace-qa"></i>QA</span><span><i class="trace-swatch trace-qb"></i>QB</span><span><i class="trace-swatch trace-qc"></i>QC</span><span><i class="trace-swatch trace-qd"></i>QD</span></div>
+ </article>
+ <article class="panel breadboard-panel" id="breadboardPanel" hidden>
+  <div class="panel-head"><div><div class="kicker">OPTIONAL VIEW</div><h3>Breadboard connections</h3></div><button class="icon-button" id="closeBreadboard">×</button></div>
+  <div class="breadboard" id="breadboard">
+   <div class="rail plus">+5V RAIL</div><div class="rail minus">GND RAIL</div><div class="board-chip">7490</div>
+   <div class="bb-label">14 · CLK A</div><div class="bb-label b1">1 · CLK B</div><div class="bb-label b2">5 · VCC</div><div class="bb-label b3">10 · GND</div>
+   <div class="bb-outputs"><span>12 QA</span><span>9 QB</span><span>8 QC</span><span>11 QD</span></div>
+   <div class="bb-leds"><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="guided-row"><label class="switch"><input type="checkbox" id="guidedToggle"><span class="slider"></span></label><span>Guided connection check</span><button class="mini-button accent" id="validateWiring">Validate</button></div>
+  <div class="connection-checks" id="connectionChecks"><label><input type="checkbox"> +5 V to pin 5</label><label><input type="checkbox"> Ground to pin 10</label><label><input type="checkbox"> Clock A to pin 14</label><label><input type="checkbox"> QA pin 12 to Clock B pin 1</label><label><input type="checkbox"> Reset inputs held LOW</label><label><input type="checkbox"> LEDs use resistors</label></div><p id="wiringFeedback" class="control-message"></p>
+ </article>
+</div></div>
+</section>
+<section class="view" id="view-learn">
+<div class="section-heading"><div><div class="eyebrow">MAKE THE LOGIC VISIBLE</div><h2>Learn how it counts</h2></div><div class="live-pill">STEP-BY-STEP</div></div>
+<div class="learn-grid">
+ <article class="panel lesson-card"><div class="kicker">THE COUNTER IDEA</div><h3>One pulse, one number</h3><p>A counter stores a number as HIGH and LOW output levels. The 7490 has four output bits, named QA, QB, QC and QD. Together they represent a decimal digit from zero through nine.</p><div class="bit-weights"><div><b>QD</b><small>8</small></div><div><b>QC</b><small>4</small></div><div><b>QB</b><small>2</small></div><div><b>QA</b><small>1</small></div></div><p class="formula">Decimal = 8QD + 4QC + 2QB + 1QA</p></article>
+ <article class="panel lesson-card"><div class="kicker">INSIDE THE 7490</div><h3>MOD-2 + MOD-5 = MOD-10</h3><div class="block-chain"><div><b>Clock A</b><small>pin 14</small><strong>÷ 2</strong><small>QA · pin 12</small></div><span>QA →</span><div><b>Clock B</b><small>pin 1</small><strong>÷ 5</strong><small>QB, QC, QD</small></div></div><p>The first section divides the input frequency by 2. Connecting QA to Clock B makes the second section divide by 5 too. The combined circuit repeats after 2 × 5 = 10 input pulses.</p></article>
+ <article class="panel lesson-card wide"><div class="kicker">COUNTING SEQUENCE</div><h3>Follow the output bits</h3><p>Each row is the stable BCD output after the indicated number of falling clock edges. The 10th pulse returns the decade counter to 0000.</p><div class="sequence-track" id="sequenceTrack"></div><button class="button primary" id="demoSequence">▶ Demonstrate sequence</button></article>
+ <article class="panel lesson-card"><div class="kicker">EDGE TRIGGERING</div><h3>Why does the count change?</h3><p>The 7490 changes state on a HIGH-to-LOW transition (falling edge) at its clock input. In decade mode, Clock A receives the external pulse and QA feeds Clock B. This makes the ÷5 section respond to QA transitions.</p><p class="note-box">A manual “clock pulse” includes a HIGH phase and a falling edge. One complete pulse advances the decade count once.</p></article>
+ <article class="panel lesson-card"><div class="kicker">CONTROL PINS</div><h3>Reset and preset</h3><p>Both reset-to-zero pins R0(1) and R0(2) must be HIGH together to asynchronously clear outputs to 0000. Both set-to-nine pins R9(1) and R9(2) must be HIGH together to preset outputs to 1001.</p><p class="note-box warn">Keep asynchronous control inputs LOW during normal counting. Do not activate reset and preset pairs at the same time; that condition is unspecified for this teaching model.</p></article>
+ <article class="panel lesson-card wide"><div class="kicker">PIN MAP · DIP-14</div><h3>Know the connections</h3><div class="pin-map"><span>1 · Clock B</span><span>2 · Reset 0 (1)</span><span>3 · Reset 0 (2)</span><span>4 · NC</span><span>5 · VCC</span><span>6 · Set 9 (1)</span><span>7 · Set 9 (2)</span><span>8 · QC</span><span>9 · QB</span><span>10 · GND</span><span>11 · QD</span><span>12 · QA</span><span>13 · NC</span><span>14 · Clock A</span></div></article>
+</div>
+<article class="panel lesson-card quiz-card"><div class="kicker">QUICK CHECK</div><h3>Test your understanding</h3><div id="quizQuestion" class="quiz-question"></div><div id="quizOptions" class="quiz-options"></div><button class="mini-button accent" id="quizCheck">Check answer</button><p id="quizFeedback" class="practice-feedback" aria-live="polite"></p></article><div class="reference-grid"><figure class="panel reference"><img src="assets/7490-block-diagram-reference.png" alt="Supplied IC 7490 internal block diagram"><figcaption>Supplied reference · IC 7490 block diagram</figcaption></figure><figure class="panel reference"><img src="assets/7490-pinout-reference.png" alt="Supplied IC 7490 pin configuration"><figcaption>Supplied reference · DIP pin configuration</figcaption></figure><figure class="panel reference"><img src="assets/7490-circuit-reference.png" alt="Supplied decade counter circuit"><figcaption>Supplied reference · decade counter circuit</figcaption></figure></div>
+</section>
+<section class="view" id="view-manual">
+<div class="section-heading"><div><div class="eyebrow">LAB RECORD</div><h2>Practical manual</h2></div><button class="button" id="manualPrint">Print manual</button></div>
+<div class="manual-intro panel"><div><div class="kicker">PRACTICAL NO. 17</div><h3>Implement decade counter using digital IC</h3><p>Use the sections below as a guided lab record. Your editable entries stay in this browser on this device.</p></div><div class="manual-badge">DIGITAL<br>TECHNIQUES</div></div>
+<div class="manual-list" id="manualList"></div>
+</section>
+</div>
+</main>
+<footer><span>Developed by Mr. Atul Kalukhe</span><span>VIRTUAL DIGITAL ELECTRONICS LAB <i class="status-dot"></i></span></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body></html>
+
+
